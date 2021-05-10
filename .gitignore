@@ -1,5 +1,5 @@
-keys
+keys.py
 dist
 build
 app.spec
-geckodriver
+geckodriver.log
