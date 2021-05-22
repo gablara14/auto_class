@@ -1,5 +1,5 @@
 
 keys = {
-    "username":"SEUTIA",
-    "password": "SUASENHA"
+    "username":"",
+    "password": ""
 }

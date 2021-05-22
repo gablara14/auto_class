@@ -24,7 +24,8 @@ gestao_de_operacoes_elo = mack_launch_url + "292517"
 si_elo = mack_launch_url + "290130"
 analise_viabilidade_financeira_elo = mack_launch_url + "134975"
 comportamento_organizacional_elo = mack_launch_url + "148587"
-
+politicas_e_praticas_elo = mack_launch_url + '140206'
+inovacao_elo = 'https://shorturl.at/mwCEK'
 
 gf_dict = {
     "url": gestao_financeira,
@@ -50,11 +51,19 @@ si_dict = {
     "url": si,
     "elo": si_elo
 }
-
+# Noturno
+inov_dict = {
+    "url": inovacao,
+    "elo": inovacao_elo
+}
+pol_prat_dict = {
+    "url": politicas_e_praticas,
+    "elo": politicas_e_praticas_elo
+}
 
 classes = [
-    [gf_dict, le_dict],
-    [go_dict, avf_dict],
+    [gf_dict, le_dict, inov_dict],
+    [go_dict, avf_dict, pol_prat_dict],
     [go_dict, {"url": '', "elo": ""}],
     [co_dict, le_dict],
     [si_dict, co_dict],
@@ -63,9 +72,12 @@ classes = [
 condition = (hour == 9 and minute > 10) or hour > 9
 
 
+
 def getClassURL(URLType = "url"):
     if weekday == 6:
         return classes[0][0][URLType]
+    if hour > 17 and weekday <= 1:
+        return classes[weekday][2][URLType]
     if condition:
         return classes[weekday][1][URLType]
     else:
